@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "meta_title": "My CMS",
+        "meta_description": "A powerful vanilla PHP CMS",
+        "meta_keywords": "",
+        "og_image": "",
+        "google_analytics": "",
+        "robots_txt": "User-agent: *\nAllow: \/",
+        "sitemap_enabled": 1
+    }
+]

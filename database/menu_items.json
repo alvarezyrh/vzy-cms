@@ -1,0 +1,57 @@
+[
+    {
+        "menu_id": 1,
+        "parent_id": 0,
+        "title": "Home",
+        "url": "\/public\/home\/",
+        "type": "page",
+        "object_id": 1,
+        "order_num": 1,
+        "target": "_self",
+        "id": 1
+    },
+    {
+        "menu_id": 1,
+        "parent_id": 0,
+        "title": "Tentang",
+        "url": "#about",
+        "type": "custom",
+        "object_id": null,
+        "order_num": 2,
+        "target": "_self",
+        "id": 2
+    },
+    {
+        "menu_id": 1,
+        "parent_id": 0,
+        "title": "Layanan",
+        "url": "#services",
+        "type": "custom",
+        "object_id": null,
+        "order_num": 3,
+        "target": "_self",
+        "id": 3
+    },
+    {
+        "menu_id": 1,
+        "parent_id": 0,
+        "title": "Proses",
+        "url": "#process",
+        "type": "custom",
+        "object_id": null,
+        "order_num": 4,
+        "target": "_self",
+        "id": 4
+    },
+    {
+        "menu_id": 1,
+        "parent_id": 0,
+        "title": "Klien",
+        "url": "#testimonials",
+        "type": "custom",
+        "object_id": null,
+        "order_num": 5,
+        "target": "_self",
+        "id": 5
+    }
+]

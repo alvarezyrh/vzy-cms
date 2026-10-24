@@ -1,0 +1,43 @@
+[
+    {
+        "id": 1,
+        "setting_key": "site_name",
+        "setting_value": "My CMS"
+    },
+    {
+        "id": 2,
+        "setting_key": "site_tagline",
+        "setting_value": "Powered by Vanilla PHP"
+    },
+    {
+        "id": 3,
+        "setting_key": "site_url",
+        "setting_value": ""
+    },
+    {
+        "id": 4,
+        "setting_key": "posts_per_page",
+        "setting_value": "10"
+    },
+    {
+        "id": 5,
+        "setting_key": "timezone",
+        "setting_value": "Asia\/Jakarta"
+    },
+    {
+        "id": 6,
+        "setting_key": "date_format",
+        "setting_value": "d M Y"
+    },
+    {
+        "id": 7,
+        "setting_key": "allow_comments",
+        "setting_value": "1"
+    },
+    {
+        "id": 8,
+        "setting_key": "navigation_seeded",
+        "setting_value": "1",
+        "updated_at": "2026-10-24 12:16:39"
+    }
+]

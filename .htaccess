@@ -1,0 +1,30 @@
+# Vanilla PHP CMS by vzy
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Auto base path (works in / or /cms/)
+RewriteBase /
+
+# Don't rewrite real files/folders
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Block direct access to sensitive folders
+RewriteRule ^database/ - [F,L]
+RewriteRule ^config/ - [F,L]
+RewriteRule ^includes/ - [F,L]
+
+# Admin folder - pass through
+RewriteRule ^admin/ - [L]
+
+# Front controller
+RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Prevent PHP execution in uploads
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>

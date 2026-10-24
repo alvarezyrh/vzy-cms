@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Home",
+        "slug": "home",
+        "content": "<p>Homepage utama VZY Tech.<\/p>",
+        "custom_css": "",
+        "custom_js": "",
+        "status": "published",
+        "is_frontpage": 1,
+        "author_id": 1,
+        "seo_title": "VZY Tech — Software · Consultant · Education",
+        "seo_description": "VZY Tech — Solusi IT Software, IT Consultant, dan Pendidikan Digital.",
+        "seo_keywords": "IT software, IT consultant, pendidikan digital",
+        "created_at": "2026-10-24 12:02:10",
+        "updated_at": "2026-10-24 12:02:10",
+        "id": 1
+    }
+]

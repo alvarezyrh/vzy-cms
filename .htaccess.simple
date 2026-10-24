@@ -1,0 +1,3 @@
+# Use this if main .htaccess causes "Access Denied" / 403
+# Rename to .htaccess
+Options -Indexes

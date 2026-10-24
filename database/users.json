@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "username": "admin",
+        "email": "admin@cms.local",
+        "password": "$2y$12$ET0ODLcvza5MyhcLX3ynNOYVqSHcNq4GspQgw1h4xcFlRy7LFcRse",
+        "role": "admin",
+        "full_name": "Administrator",
+        "avatar": null,
+        "created_at": "2026-10-24 11:55:28",
+        "updated_at": "2026-10-24 11:55:28"
+    }
+]

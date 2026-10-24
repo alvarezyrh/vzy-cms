@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "user_id": 1,
+        "username": "admin",
+        "action": "login",
+        "detail": "admin",
+        "created_at": "2026-10-24 11:57:22",
+        "ip": "127.0.0.1"
+    }
+]
