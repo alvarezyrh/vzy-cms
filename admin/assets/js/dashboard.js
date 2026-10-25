@@ -172,28 +172,6 @@ document.addEventListener('DOMContentLoaded', function () {
         setInterval(updateDateTime, 1000);
     }
 
-    // Analog clock on the settings page
-    const analogHour = document.getElementById('analogHour');
-    const analogMinute = document.getElementById('analogMinute');
-    const analogSecond = document.getElementById('analogSecond');
-    const analogDigitalTime = document.getElementById('analogDigitalTime');
-    const analogDate = document.getElementById('analogDate');
-    if (analogHour && analogMinute && analogSecond) {
-        const updateAnalogClock = function () {
-            const now = new Date();
-            const seconds = now.getSeconds();
-            const minutes = now.getMinutes() + seconds / 60;
-            const hours = (now.getHours() % 12) + minutes / 60;
-            analogHour.style.transform = 'translateX(-50%) rotate(' + (hours * 30) + 'deg)';
-            analogMinute.style.transform = 'translateX(-50%) rotate(' + (minutes * 6) + 'deg)';
-            analogSecond.style.transform = 'translateX(-50%) rotate(' + (seconds * 6) + 'deg)';
-            if (analogDigitalTime) analogDigitalTime.textContent = now.toLocaleTimeString('id-ID', { hour12: false });
-            if (analogDate) analogDate.textContent = now.toLocaleDateString('id-ID', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
-        };
-        updateAnalogClock();
-        setInterval(updateAnalogClock, 1000);
-    }
-
     const weatherTemp = document.getElementById('weatherTemp');
     const weatherCondition = document.getElementById('weatherCondition');
     const weatherLocation = document.getElementById('weatherLocation');

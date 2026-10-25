@@ -7,6 +7,7 @@ CMS ringan berbasis **Vanilla PHP 8** dengan dashboard modern (floating + rounde
 ### Content
 - **Posts** — CRUD, category, tags, featured image, SEO, draft/publish/trash
 - **Pages** — custom HTML / CSS / JS per page + set Frontpage
+- **Products** — kelola katalog produk, unggah gambar, dan terima pesanan WhatsApp dengan jumlah pilihan melalui shortcode `[product_catalog]`
 - **Categories & Tags**
 - **Media Library** — upload multi gambar, hapus, copy path
 - **Comments** — form di frontend, moderasi (approve / spam / delete)
@@ -60,7 +61,7 @@ CMS ringan berbasis **Vanilla PHP 8** dengan dashboard modern (floating + rounde
 ```
 cms/
 ├── admin/           # Dashboard
-│   ├── media.php
+│   ├── media.php, products.php
 │   ├── users.php
 │   ├── comments.php
 │   ├── posts.php, pages.php, ...

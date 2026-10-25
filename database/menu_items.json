@@ -53,5 +53,16 @@
         "order_num": 5,
         "target": "_self",
         "id": 5
+    },
+    {
+        "menu_id": 1,
+        "parent_id": 0,
+        "title": "Produk",
+        "url": "/public/pages/produk.html",
+        "type": "page",
+        "object_id": 2,
+        "order_num": 6,
+        "target": "_self",
+        "id": 6
     }
 ]

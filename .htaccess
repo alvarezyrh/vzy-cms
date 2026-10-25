@@ -7,6 +7,9 @@ RewriteEngine On
 # Auto base path (works in / or /cms/)
 RewriteBase /
 
+# Prevent uploaded PHP files from being served or executed.
+RewriteRule ^uploads/.*\.php$ - [F,L,NC]
+
 # Don't rewrite real files/folders
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
@@ -22,9 +25,4 @@ RewriteRule ^admin/ - [L]
 
 # Front controller
 RewriteRule ^(.*)$ index.php [QSA,L]
-</IfModule>
-
-# Prevent PHP execution in uploads
-<IfModule mod_php.c>
-  php_flag engine off
 </IfModule>

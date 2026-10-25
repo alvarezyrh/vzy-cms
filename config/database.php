@@ -102,7 +102,7 @@ function initDatabase(): void {
         ]]);
     }
 
-    foreach (['categories', 'tags', 'posts', 'post_tags', 'pages', 'menu_items', 'media', 'comments', 'activity'] as $t) {
+    foreach (['categories', 'tags', 'posts', 'post_tags', 'pages', 'products', 'menu_items', 'media', 'comments', 'activity'] as $t) {
         if (!file_exists(dataPath($t))) saveData($t, []);
     }
 

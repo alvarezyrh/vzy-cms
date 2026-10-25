@@ -9,6 +9,9 @@
             <a href="index.php" class="nav-item <?= ($currentPage ?? '') === 'dashboard' ? 'active' : '' ?>">
                 <i class="fas fa-home"></i> Dashboard
             </a>
+            <a href="../public/" class="nav-item" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-globe"></i> Ke Website
+            </a>
         </div>
 
         <div class="nav-section">
@@ -27,14 +30,17 @@
             <a href="pages.php" class="nav-item <?= ($currentPage ?? '') === 'pages' ? 'active' : '' ?>">
                 <i class="fas fa-file-alt"></i> Pages
             </a>
+            <a href="products.php" class="nav-item <?= ($currentPage ?? '') === 'products' ? 'active' : '' ?>">
+                <i class="fas fa-box-open"></i> Products
+            </a>
+            <a href="menus.php" class="nav-item <?= ($currentPage ?? '') === 'menus' ? 'active' : '' ?>">
+                <i class="fas fa-bars"></i> Navigation
+            </a>
             <a href="media.php" class="nav-item <?= ($currentPage ?? '') === 'media' ? 'active' : '' ?>">
                 <i class="fas fa-images"></i> Media
             </a>
             <a href="comments.php" class="nav-item <?= ($currentPage ?? '') === 'comments' ? 'active' : '' ?>">
                 <i class="fas fa-comments"></i> Comments
-            </a>
-            <a href="menus.php" class="nav-item <?= ($currentPage ?? '') === 'menus' ? 'active' : '' ?>">
-                <i class="fas fa-bars"></i> Navigation
             </a>
         </div>
 
@@ -65,16 +71,4 @@
             <?php endif; ?>
         </div>
     </nav>
-    <div class="sidebar-clock">
-        <div class="sidebar-clock-label"><i class="fas fa-clock"></i> Waktu Saat Ini</div>
-        <div class="analog-clock" aria-label="Jam analog">
-            <span class="clock-number n12">12</span><span class="clock-number n1">1</span><span class="clock-number n2">2</span>
-            <span class="clock-number n3">3</span><span class="clock-number n4">4</span><span class="clock-number n5">5</span>
-            <span class="clock-number n6">6</span><span class="clock-number n7">7</span><span class="clock-number n8">8</span>
-            <span class="clock-number n9">9</span><span class="clock-number n10">10</span><span class="clock-number n11">11</span>
-            <span class="clock-hand clock-hour" id="analogHour"></span><span class="clock-hand clock-minute" id="analogMinute"></span><span class="clock-hand clock-second" id="analogSecond"></span><span class="clock-center"></span>
-        </div>
-        <div class="analog-digital-time" id="analogDigitalTime">--:--:--</div>
-        <div class="analog-date" id="analogDate">Memuat tanggal...</div>
-    </div>
 </aside>

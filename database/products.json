@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Windows 11",
+        "description": "Sistem operasi desktop Microsoft untuk produktivitas, keamanan, dan pengalaman kerja modern. Edisi dan persyaratan perangkat dapat disesuaikan dengan kebutuhan.",
+        "price": "",
+        "image": "",
+        "status": "published",
+        "created_at": "2026-10-24 22:27:03",
+        "updated_at": "2026-10-24 22:27:03"
+    },
+    {
+        "id": 2,
+        "name": "Kaspersky Antivirus",
+        "description": "Solusi keamanan untuk membantu melindungi perangkat dari malware, phishing, dan ancaman digital. Pilihan paket dan jumlah perangkat mengikuti kebutuhan.",
+        "price": "",
+        "image": "",
+        "status": "published",
+        "created_at": "2026-10-24 22:27:03",
+        "updated_at": "2026-10-24 22:27:03"
+    },
+    {
+        "id": 3,
+        "name": "Google Cloud",
+        "description": "Layanan cloud untuk komputasi, penyimpanan, database, dan pengembangan aplikasi. Konsultasikan kebutuhan dan estimasi penggunaan untuk menentukan solusi yang sesuai.",
+        "price": "",
+        "image": "",
+        "status": "published",
+        "created_at": "2026-10-24 22:27:03",
+        "updated_at": "2026-10-24 22:27:03"
+    },
+    {
+        "id": 4,
+        "name": "Microsoft 365 (Office 365)",
+        "description": "Aplikasi produktivitas Office dan layanan cloud untuk bekerja serta berkolaborasi. Pilihan aplikasi dan paket bergantung pada kebutuhan pengguna atau organisasi.",
+        "price": "",
+        "image": "",
+        "status": "published",
+        "created_at": "2026-10-24 22:27:03",
+        "updated_at": "2026-10-24 22:27:03"
+    }
+]

@@ -69,7 +69,7 @@ button, input, select, textarea { font-family: inherit; }
     position: fixed;
     top: 16px;
     left: 16px;
-    bottom: 76px;
+    bottom: 60px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     z-index: 100;
@@ -84,32 +84,38 @@ button, input, select, textarea { font-family: inherit; }
     display: flex;
     align-items: center;
     gap: 12px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.82), rgba(6, 78, 59, 0.72)),
+        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+    backdrop-filter: blur(2px);
 }
 
 .sidebar-logo {
     width: 42px;
     height: 42px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-weight: 700;
+    color: #ffffff;
+    font-weight: 800;
     font-size: 14px;
-    letter-spacing: 0.04em;
-    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.4);
+    letter-spacing: 0.06em;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .sidebar-brand {
     font-size: 18px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
 }
 
 .sidebar-brand span {
-    color: var(--primary);
+    color: #d9fff9;
 }
 
 .sidebar-nav {
@@ -151,9 +157,10 @@ button, input, select, textarea { font-family: inherit; }
 }
 
 .nav-item.active {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
+    background: transparent;
+    border: 1px solid rgba(13, 148, 136, 0.55);
+    color: var(--primary-dark);
+    box-shadow: none;
 }
 
 .nav-item i {
@@ -171,7 +178,7 @@ button, input, select, textarea { font-family: inherit; }
 }
 
 .nav-item.active .badge {
-    background: rgba(255,255,255,0.25);
+    background: rgba(13, 148, 136, 0.15);
 }
 
 .nav-dropdown-toggle {
@@ -201,7 +208,8 @@ button, input, select, textarea { font-family: inherit; }
 }
 .nav-submenu .nav-item i { font-size: 13px; }
 .nav-submenu .nav-item.active {
-    background: rgba(13, 148, 136, .12);
+    background: transparent;
+    border: 1px solid rgba(13, 148, 136, 0.55);
     color: var(--primary-dark);
     box-shadow: none;
 }
@@ -224,9 +232,6 @@ button, input, select, textarea { font-family: inherit; }
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-    position: sticky;
-    top: 16px;
-    z-index: 50;
 }
 
 .topbar-left {
@@ -507,41 +512,6 @@ button, input, select, textarea { font-family: inherit; }
 .server-status-grid .status-ok { color: #047857; }
 .server-status-grid .status-ok i { margin-right: 4px; }
 
-/* Analog clock */
-.sidebar-clock { flex: 0 0 auto; margin: 0 12px 14px; padding: 12px 10px; border-radius: var(--radius); background: linear-gradient(145deg, #0f172a, #0f766e); color: white; text-align: center; box-shadow: 0 8px 18px rgba(15,118,110,.18); }
-.sidebar-clock-label { color: #ccfbf1; font-size: 11px; font-weight: 700; margin-bottom: 9px; text-transform: uppercase; letter-spacing: .5px; }
-.sidebar-clock-label i { margin-right: 5px; }
-.sidebar-clock .analog-clock { width: 136px; height: 136px; border-width: 5px; margin: 0 auto; }
-.sidebar-clock .clock-number { font-size: 9px; }
-.sidebar-clock .clock-hour { height: 34px; width: 3px; }
-.sidebar-clock .clock-minute { height: 47px; width: 2px; }
-.sidebar-clock .clock-second { height: 53px; width: 1px; }
-.sidebar-clock .clock-center { width: 8px; height: 8px; border-width: 2px; }
-.sidebar-clock .analog-digital-time { margin-top: 9px; color: #ecfeff; font-size: 16px; letter-spacing: 1px; }
-.sidebar-clock .analog-date { color: #99f6e4; font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.analog-clock {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    border: 8px solid #0f766e;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 25%, #334155 0%, #0f172a 62%, #020617 100%);
-    box-shadow: 0 12px 30px rgba(15,118,110,.28), inset 0 0 0 2px rgba(45,212,191,.45), inset 0 0 30px rgba(0,0,0,.5);
-}
-.analog-clock::before { content: ''; position: absolute; inset: 10px; border: 1px solid rgba(45,212,191,.28); border-radius: 50%; }
-.clock-number { position: absolute; z-index: 1; color: #ccfbf1; font-size: 15px; font-weight: 700; transform: translate(-50%, -50%); text-shadow: 0 0 8px rgba(45,212,191,.5); }
-.n12 { top: 10%; left: 50%; }.n1 { top: 16%; left: 70%; }.n2 { top: 30%; left: 84%; }
-.n3 { top: 50%; left: 90%; }.n4 { top: 70%; left: 84%; }.n5 { top: 84%; left: 70%; }
-.n6 { top: 90%; left: 50%; }.n7 { top: 84%; left: 30%; }.n8 { top: 70%; left: 16%; }
-.n9 { top: 50%; left: 10%; }.n10 { top: 30%; left: 16%; }.n11 { top: 16%; left: 30%; }
-.clock-hand { position: absolute; z-index: 3; left: 50%; bottom: 50%; width: 4px; border-radius: 5px; transform-origin: 50% 100%; transform: translateX(-50%) rotate(0deg); }
-.clock-hour { height: 62px; background: #f8fafc; box-shadow: 0 0 8px rgba(255,255,255,.45); }
-.clock-minute { height: 84px; width: 3px; background: #5eead4; box-shadow: 0 0 8px rgba(45,212,191,.65); }
-.clock-second { height: 94px; width: 1px; background: #fb7185; box-shadow: 0 0 8px rgba(251,113,133,.7); }
-.clock-center { position: absolute; z-index: 4; left: 50%; top: 50%; width: 12px; height: 12px; border: 3px solid #ccfbf1; border-radius: 50%; background: #0d9488; transform: translate(-50%, -50%); box-shadow: 0 0 10px rgba(45,212,191,.8); }
-.analog-digital-time { margin-top: 18px; color: var(--primary-dark); font-size: 25px; font-weight: 700; letter-spacing: 2px; }
-.analog-date { color: var(--text-secondary); font-size: 13px; margin-top: 2px; }
-
 /* Stats Cards */
 .stats-grid {
     display: grid;
@@ -639,7 +609,7 @@ table tr:hover td {
     align-items: center;
     gap: 8px;
     padding: 10px 18px;
-    border-radius: 50px;
+    border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
     border: none;

@@ -55,7 +55,7 @@ if($action==='edit'&&$id){$page=findById('pages',$id);if(!$page){flash('error','
 </div>
 <div id="tab-content" class="tab-content active"><div class="form-group"><label class="form-label">HTML Content</label>
 <textarea name="content" class="code-editor" rows="16"><?=e($page['content']??'')?></textarea>
-<div class="form-hint">Full HTML untuk page ini</div></div></div>
+<div class="form-hint">Full HTML untuk page ini. Untuk menampilkan katalog produk, sisipkan shortcode <code>[product_catalog]</code> pada posisi yang diinginkan.</div></div></div>
 <div id="tab-css" class="tab-content"><div class="form-group"><label class="form-label">Custom CSS</label>
 <textarea name="custom_css" class="code-editor" rows="14"><?=e($page['custom_css']??'')?></textarea></div></div>
 <div id="tab-js" class="tab-content"><div class="form-group"><label class="form-label">Custom JavaScript</label>
