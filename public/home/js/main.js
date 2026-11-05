@@ -88,7 +88,7 @@
     addChatMessage(answerChatQuestion(normalizedQuestion), 'bot');
     if (chatWhatsapp) {
       const whatsappMessage = 'Halo PT MBG, saya ingin bertanya: ' + normalizedQuestion;
-      chatWhatsapp.href = 'https://wa.me/6281234567890?text=' + encodeURIComponent(whatsappMessage);
+      chatWhatsapp.href = 'https://wa.me/6281313616756?text=' + encodeURIComponent(whatsappMessage);
     }
   }
 
@@ -138,7 +138,7 @@
       phone ? 'Nomor WhatsApp: ' + phone : '',
       'Kebutuhan: ' + message,
     ].filter(Boolean).join('\n');
-    const whatsappUrl = 'https://wa.me/6281234567890?text=' + encodeURIComponent(whatsappMessage);
+    const whatsappUrl = 'https://wa.me/6281313616756?text=' + encodeURIComponent(whatsappMessage);
     const whatsappWindow = window.open(whatsappUrl, '_blank');
 
     if (whatsappWindow) {

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Ilustrasi Windows 11">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dbeafe"/><stop offset="1" stop-color="#e0f2fe"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#60a5fa" stop-opacity=".55"/><stop offset="1" stop-color="#60a5fa" stop-opacity="0"/></radialGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1e3a8a"/><stop offset=".55" stop-color="#2563eb"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <linearGradient id="pane" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e0f2fe"/><stop offset="1" stop-color="#7dd3fc"/></linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg)"/>
+  <circle cx="320" cy="210" r="230" fill="url(#glow)"/>
+  <circle cx="70" cy="60" r="38" fill="#bfdbfe"/><circle cx="585" cy="340" r="52" fill="#bae6fd"/>
+  <rect x="170" y="70" width="300" height="200" rx="16" fill="#0f172a"/>
+  <rect x="180" y="80" width="280" height="180" rx="9" fill="url(#screen)"/>
+  <path d="M180 200 Q300 140 460 175 L460 251 Q460 260 451 260 L189 260 Q180 260 180 251Z" fill="#1d4ed8" opacity=".45"/>
+  <g transform="translate(286 128)">
+    <rect width="32" height="32" rx="3" fill="url(#pane)"/><rect x="36" width="32" height="32" rx="3" fill="url(#pane)"/>
+    <rect y="36" width="32" height="32" rx="3" fill="url(#pane)"/><rect x="36" y="36" width="32" height="32" rx="3" fill="url(#pane)"/>
+  </g>
+  <rect x="262" y="238" width="116" height="14" rx="7" fill="#fff" opacity=".35"/>
+  <path d="M290 270 L350 270 L360 310 L280 310Z" fill="#334155"/>
+  <rect x="245" y="306" width="150" height="12" rx="6" fill="#1e293b"/>
+</svg>

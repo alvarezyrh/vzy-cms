@@ -254,13 +254,14 @@ function publicCatalogNavigation(): string {
 function publicCatalogFooter(): string {
     $brand = getSetting('nav_brand', 'PT MBG');
     $logoMark = getSetting('nav_logo_mark', 'MBG');
+    $whatsappNumber = '6281313616756';
 
     return '<footer class="footer"><div class="container"><div class="footer-grid">'
         . '<div class="footer-brand"><a href="/public/home/" class="nav-logo"><span class="nav-logo-mark">' . e($logoMark) . '</span>' . e($brand) . '</a>'
         . '<p>Mitra teknologi untuk solusi software, konsultasi IT, dan kebutuhan produk digital bisnis Anda.</p></div>'
         . '<div><h4>Navigasi</h4><ul><li><a href="/public/home/index.html#about">Tentang Kami</a></li><li><a href="/public/home/index.html#services">Layanan</a></li><li><a href="/public/pages/produk.html">Katalog Produk</a></li></ul></div>'
         . '<div><h4>Produk</h4><ul><li><a href="/public/pages/produk.html">Windows 11</a></li><li><a href="/public/pages/produk.html">Kaspersky Antivirus</a></li><li><a href="/public/pages/produk.html">Google Cloud &amp; Microsoft 365</a></li></ul></div>'
-        . '<div><h4>Kontak</h4><ul><li><a href="mailto:hello@vzytech.id">hello@vzytech.id</a></li><li><a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li>Jakarta, Indonesia</li></ul></div>'
+        . '<div><h4>Kontak</h4><ul><li><a href="mailto:hello@vzytech.id">hello@vzytech.id</a></li><li><a href="https://wa.me/' . e($whatsappNumber) . '" target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li>Jakarta, Indonesia</li></ul></div>'
         . '</div><div class="footer-bottom"><span>&copy; ' . date('Y') . ' PT MBG. All rights reserved.</span></div></div></footer>';
 }
 
@@ -305,28 +306,58 @@ function productImageUrlForPage(string $image): string {
 function renderProductCatalog(): string {
     $products = findWhere('products', fn($product) => ($product['status'] ?? '') === 'published');
     usort($products, fn($a, $b) => strcmp($b['created_at'] ?? '', $a['created_at'] ?? ''));
+    $whatsappNumber = '6281313616756';
 
     $html = '<style>'
         . '.catalog-page{padding-top:88px;background:var(--off-white)}'
-        . '.cms-product-catalog{background-color:var(--off-white);background-image:radial-gradient(circle,rgba(13,148,136,.2) 1.5px,transparent 1.75px),linear-gradient(180deg,var(--off-white),var(--white));background-size:26px 26px,100% 100%}'
-        . '.cms-product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:24px;align-items:stretch}'
-        . '.cms-product-card{display:flex;flex-direction:column;padding:0;min-width:0}'
-        . '.cms-product-catalog .cms-product-card,.cms-product-catalog .cms-product-card:hover{transition:none;transform:none;box-shadow:none}'
-        . '.cms-product-catalog .cms-product-card::before{animation:none}'
-        . '.cms-product-image,.cms-product-placeholder{width:100%;aspect-ratio:16/10;object-fit:cover;background:linear-gradient(135deg,rgba(13,148,136,.12),rgba(22,163,74,.1));border-bottom:1px solid var(--border)}'
+        // Background: soft color blobs + dot grid so the page doesn't look plain.
+        . '.cms-product-catalog{position:relative;isolation:isolate;overflow:hidden;padding:56px 0 80px;background-color:#f0fdfa;background-image:radial-gradient(circle,rgba(13,148,136,.16) 1.5px,transparent 1.75px),linear-gradient(180deg,#ecfeff 0%,#f0fdfa 45%,#ffffff 100%);background-size:24px 24px,100% 100%}'
+        . '.cms-product-catalog::before,.cms-product-catalog::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);pointer-events:none}'
+        . '.cms-product-catalog::before{width:520px;height:520px;top:-180px;left:-160px;background:rgba(45,212,191,.35)}'
+        . '.cms-product-catalog::after{width:560px;height:560px;bottom:-220px;right:-180px;background:rgba(74,222,128,.25)}'
+        . '.cms-product-catalog .section-header{margin-bottom:40px}'
+        . '.cms-product-catalog .section-desc{max-width:560px;margin-left:auto;margin-right:auto}'
+        // Grid: 4 columns on wide screens, 2 on tablet, 1 on phone.
+        . '.cms-product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;align-items:stretch}'
+        . '@media(max-width:1100px){.cms-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}'
+        . '@media(max-width:600px){.cms-product-grid{grid-template-columns:1fr}}'
+        . '.cms-product-card{display:flex;flex-direction:column;padding:0;min-width:0;overflow:hidden;border-radius:20px;background:rgba(255,255,255,.92);border:1px solid rgba(13,148,136,.14);box-shadow:0 12px 32px rgba(15,23,42,.06);backdrop-filter:blur(6px)}'
+        . '.cms-product-catalog .cms-product-card{transition:transform .25s ease,box-shadow .25s ease}'
+        . '.cms-product-catalog .cms-product-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(13,148,136,.16)}'
+        . '.cms-product-catalog .cms-product-card::before{display:none;animation:none}'
+        . '.cms-product-image,.cms-product-placeholder{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:linear-gradient(135deg,rgba(13,148,136,.12),rgba(22,163,74,.1));border-bottom:1px solid rgba(13,148,136,.1)}'
         . '.cms-product-placeholder{display:grid;place-items:center;color:var(--turquoise);font-size:42px}'
-        . '.cms-product-info{display:flex;flex:1;flex-direction:column;padding:24px}'
-        . '.cms-product-info h3{font-family:var(--font-display);font-size:1.2rem;line-height:1.3;margin-bottom:10px;color:var(--slate)}'
-        . '.cms-product-description{color:var(--muted);font-size:.925rem;line-height:1.65;margin:0}'
-        . '.cms-product-price{font-family:var(--font-display);font-weight:700;color:var(--turquoise-dark);font-size:1.1rem;margin:18px 0 0}'
-        . '.cms-product-order{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:12px;margin-top:auto;padding-top:20px}'
-        . '.cms-product-order label{display:grid;grid-template-rows:18px 42px;gap:7px;min-width:0;color:var(--muted);font-size:.75rem;font-weight:600}'
-        . '.cms-product-quantity{width:100%;height:42px;padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--white);font:inherit;color:var(--slate);outline:none}'
-        . '.cms-product-quantity:focus{border-color:var(--turquoise);box-shadow:0 0 0 3px var(--turquoise-glow)}'
-        . '.cms-product-order-link{display:inline-flex;align-items:center;justify-content:center;width:100%;height:42px;padding:0 12px;border:1px solid var(--turquoise);border-radius:10px;background:transparent;color:var(--turquoise-dark);text-decoration:none;font:600 .875rem var(--font);white-space:nowrap;transition:none}'
-        . '.cms-product-catalog .cms-product-order-link:hover{background:transparent;color:var(--turquoise-dark);transform:none;box-shadow:none}'
+        . '.cms-product-info{display:flex;flex:1;flex-direction:column;padding:20px 20px 22px}'
+        . '.cms-product-info h3{font-family:var(--font-display);font-size:1.12rem;line-height:1.35;margin:0 0 8px;color:var(--slate)}'
+        . '.cms-product-description{color:var(--muted);font-size:.9rem;line-height:1.6;margin:0}'
+        . '.cms-product-price{display:none}'
+        // Order row: quantity stepper (fixed width) + order button (fills the rest), same height.
+        . '.cms-product-order{margin-top:auto;padding-top:18px}'
+        . '.cms-product-order-label{display:block;margin:0 0 8px;padding-top:14px;border-top:1px dashed rgba(13,148,136,.18);color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}'
+        . '.cms-product-order-row{display:grid;grid-template-columns:116px minmax(0,1fr);gap:10px;align-items:stretch}'
+        . '.cms-qty{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;height:44px;border:1px solid rgba(13,148,136,.22);border-radius:12px;background:#fff;overflow:hidden}'
+        . '.cms-qty:focus-within{border-color:var(--turquoise);box-shadow:0 0 0 3px rgba(13,148,136,.12)}'
+        . '.cms-qty-btn{border:0;background:#f0fdfa;color:var(--turquoise-dark);font-size:1.05rem;font-weight:700;cursor:pointer;line-height:1}'
+        . '.cms-qty-btn:hover{background:#ccfbf1}'
+        . '.cms-product-quantity{width:100%;min-width:0;height:100%;padding:0 2px;border:0;background:transparent;font:700 .95rem var(--font);color:var(--slate);text-align:center;outline:none;-moz-appearance:textfield;appearance:textfield}'
+        . '.cms-product-quantity::-webkit-outer-spin-button,.cms-product-quantity::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}'
+        . '.cms-product-order-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;height:44px;padding:0 14px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--turquoise),#2dd4bf);color:#fff;text-decoration:none;font:700 .9rem var(--font);white-space:nowrap;cursor:pointer;box-shadow:0 10px 20px rgba(13,148,136,.2);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}'
+        . '.cms-product-order-link i{font-size:1.05rem}'
+        . '.cms-product-catalog .cms-product-order-link:hover{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;transform:translateY(-1px);box-shadow:0 12px 24px rgba(13,148,136,.26)}'
         . '.cms-product-empty{grid-column:1/-1;color:var(--muted);padding:28px;border:1px dashed var(--border);border-radius:var(--radius-sm);text-align:center}'
-        . '@media(max-width:600px){.cms-product-info{padding:20px}.cms-product-order{gap:10px}}'
+        . '.cms-order-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.45);z-index:1000;padding:20px}'
+        . '.cms-order-modal.is-open{display:flex}'
+        . '.cms-order-modal-panel{position:relative;width:min(100%,480px);background:linear-gradient(180deg,#ffffff,#f8fafc);border:1px solid rgba(148,163,184,.25);border-radius:22px;padding:24px;box-shadow:0 28px 70px rgba(15,23,42,.2)}'
+        . '.cms-order-modal-close{position:absolute;top:12px;right:12px;width:36px;height:36px;border:0;border-radius:50%;background:#e2e8f0;color:#0f172a;font-size:1.5rem;cursor:pointer;line-height:1}'
+        . '.cms-order-form{display:grid;gap:16px}'
+        . '.cms-order-form h3{margin:0 0 8px;font-size:1.45rem;color:#0f172a}'
+        . '.cms-order-form .field{display:grid;gap:7px}'
+        . '.cms-order-form label{font-size:.78rem;font-weight:700;color:#334155}'
+        . '.cms-order-form input,.cms-order-form textarea{width:100%;border:1px solid var(--border);border-radius:12px;padding:10px 12px;font:inherit;background:#fff;box-shadow:inset 0 1px 2px rgba(15,23,42,.04)}'
+        . '.cms-order-form textarea{min-height:96px;resize:vertical}'
+        . '.cms-order-form .submit-row{display:flex;justify-content:flex-end;margin-top:8px}'
+        . '.cms-order-form .btn-submit{border:0;border-radius:12px;background:linear-gradient(135deg,var(--turquoise),#2dd4bf);color:#fff;padding:12px 18px;font-weight:700;cursor:pointer;box-shadow:0 12px 24px rgba(13,148,136,.2)}'
+        . '@media(max-width:600px){.cms-product-catalog{padding:40px 0 64px}.cms-product-info{padding:18px}.cms-order-modal-panel{padding:20px}}'
         . '</style><section class="section cms-product-catalog"><div class="container">'
         . '<header class="section-header center"><div class="section-label">Solusi Digital</div>'
         . '<h1 class="section-title">Katalog Produk</h1>'
@@ -348,18 +379,32 @@ function renderProductCatalog(): string {
         if (!empty($product['description'])) {
             $html .= '<p class="cms-product-description">' . nl2br(e((string)$product['description'])) . '</p>';
         }
-        $html .= '<p class="cms-product-price">';
-        $html .= isset($product['price']) && $product['price'] !== ''
-            ? 'Rp ' . number_format((float)$product['price'], 0, ',', '.')
-            : 'Hubungi kami';
-        $html .= '</p>';
         $html .= '<div class="cms-product-order">'
-            . '<label>Jumlah pesanan<input class="cms-product-quantity" type="number" min="1" step="1" value="1" inputmode="numeric" aria-label="Jumlah pesanan ' . $name . '"></label>'
-            . '<a class="cms-product-order-link" href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" data-product="' . $name . '">Pesan</a>'
-            . '</div>';
+            . '<span class="cms-product-order-label">Jumlah pesanan</span>'
+            . '<div class="cms-product-order-row">'
+            . '<div class="cms-qty">'
+            . '<button class="cms-qty-btn" type="button" data-step="-1" aria-label="Kurangi jumlah ' . $name . '">&minus;</button>'
+            . '<input class="cms-product-quantity" type="number" min="1" step="1" value="1" inputmode="numeric" aria-label="Jumlah pesanan ' . $name . '">'
+            . '<button class="cms-qty-btn" type="button" data-step="1" aria-label="Tambah jumlah ' . $name . '">+</button>'
+            . '</div>'
+            . '<button class="cms-product-order-link" type="button" data-product="' . $name . '"><i class="fab fa-whatsapp" aria-hidden="true"></i>Pesan</button>'
+            . '</div></div>';
         $html .= '</div></article>';
     }
-    $html .= '</div><script>(function(){document.querySelectorAll(".cms-product-order-link").forEach(function(link){link.addEventListener("click",function(event){event.preventDefault();var input=this.closest(".cms-product-order").querySelector(".cms-product-quantity");var quantity=Math.max(1,parseInt(input.value,10)||1);input.value=quantity;var message="Halo, saya ingin memesan "+this.dataset.product+" sebanyak "+quantity+".";window.open("https://wa.me/6281234567890?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");});});})();</script>';
+    $html .= '</div>'
+        . '<div class="cms-order-modal" id="cmsOrderModal" aria-hidden="true">'
+        . '<div class="cms-order-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cmsOrderModalTitle">'
+        . '<button type="button" class="cms-order-modal-close" aria-label="Tutup">&times;</button>'
+        . '<form class="cms-order-form">'
+        . '<h3 id="cmsOrderModalTitle">Pesan Produk</h3>'
+        . '<div class="field"><label for="cmsOrderProduct">Produk</label><input id="cmsOrderProduct" name="product" type="text" readonly></div>'
+        . '<div class="field"><label for="cmsOrderQuantity">Jumlah</label><input id="cmsOrderQuantity" name="quantity" type="number" min="1" step="1" value="1" required></div>'
+        . '<div class="field"><label for="cmsOrderName">Nama Anda</label><input id="cmsOrderName" name="name" type="text" placeholder="Masukkan nama" required></div>'
+        . '<div class="field"><label for="cmsOrderPhone">WhatsApp / Nomor HP</label><input id="cmsOrderPhone" name="phone" type="tel" placeholder="08xxxxxxxxxx" required></div>'
+        . '<div class="field"><label for="cmsOrderNotes">Catatan (opsional)</label><textarea id="cmsOrderNotes" name="notes" placeholder="Tulis catatan tambahan..."></textarea></div>'
+        . '<div class="submit-row"><button type="submit" class="btn-submit">Kirim ke WhatsApp</button></div>'
+        . '</form></div></div>'
+        . '<script>(function(){var modal=document.getElementById("cmsOrderModal");var form=modal?modal.querySelector(".cms-order-form"):null;var productInput=modal?modal.querySelector("input[name=\"product\"]"):null;var quantityInput=modal?modal.querySelector("input[name=\"quantity\"]"):null;var nameInput=modal?modal.querySelector("input[name=\"name\"]"):null;var phoneInput=modal?modal.querySelector("input[name=\"phone\"]"):null;var notesInput=modal?modal.querySelector("textarea[name=\"notes\"]"):null;var whatsappNumber="' . e($whatsappNumber) . '";function closeModal(){if(!modal)return;modal.classList.remove("is-open");modal.setAttribute("aria-hidden","true");}document.querySelectorAll(".cms-qty-btn").forEach(function(btn){btn.addEventListener("click",function(){var input=btn.parentNode.querySelector(".cms-product-quantity");var next=(parseInt(input.value,10)||1)+parseInt(btn.dataset.step,10);input.value=Math.max(1,next);});});document.querySelectorAll(".cms-product-order-link").forEach(function(link){link.addEventListener("click",function(){if(!modal||!productInput||!quantityInput||!nameInput||!phoneInput)return;var quantity=Math.max(1,parseInt(link.closest(".cms-product-order").querySelector(".cms-product-quantity").value,10)||1);productInput.value=link.dataset.product||"Produk";quantityInput.value=quantity;nameInput.value="";phoneInput.value="";if(notesInput){notesInput.value="";}modal.classList.add("is-open");modal.setAttribute("aria-hidden","false");setTimeout(function(){nameInput.focus();},50);});});modal&&modal.querySelector(".cms-order-modal-close")&&modal.querySelector(".cms-order-modal-close").addEventListener("click",closeModal);modal&&modal.addEventListener("click",function(event){if(event.target===modal){closeModal();}});form&&form.addEventListener("submit",function(event){event.preventDefault();var product=(productInput.value||"Produk").trim();var quantity=Math.max(1,parseInt(quantityInput.value||"1",10)||1);var name=(nameInput.value||"").trim();var phone=(phoneInput.value||"").trim();var notes=(notesInput?notesInput.value:" ").trim();var message=["Halo, saya ingin memesan *"+product+"* sebanyak "+quantity+".","Nama: "+name,"WhatsApp: "+phone,notes?"Catatan: "+notes:""];window.open("https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(message.filter(Boolean).join("\n")),"_blank","noopener,noreferrer");closeModal();});})();</script>';
     return $html . '</div></section>';
 }
 

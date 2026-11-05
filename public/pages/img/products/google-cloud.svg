@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Ilustrasi Google Cloud">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eff6ff"/><stop offset="1" stop-color="#fef9c3"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".45" r=".55"><stop offset="0" stop-color="#93c5fd" stop-opacity=".5"/><stop offset="1" stop-color="#93c5fd" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg)"/>
+  <circle cx="320" cy="170" r="230" fill="url(#glow)"/>
+  <path d="M215 200 A55 55 0 0 1 250 105 A80 80 0 0 1 395 95 A62 62 0 0 1 430 210 Z" fill="#fff"/>
+  <path d="M250 105 A80 80 0 0 1 395 95" fill="none" stroke="#ea4335" stroke-width="18" stroke-linecap="round"/>
+  <path d="M395 95 A62 62 0 0 1 430 210" fill="none" stroke="#4285f4" stroke-width="18" stroke-linecap="round"/>
+  <path d="M430 210 L230 210" fill="none" stroke="#34a853" stroke-width="18" stroke-linecap="round"/>
+  <path d="M230 210 A55 55 0 0 1 250 105" fill="none" stroke="#fbbc04" stroke-width="18" stroke-linecap="round"/>
+  <g stroke="#94a3b8" stroke-width="4" stroke-dasharray="4 7"><path d="M260 222 V262M320 222 V262M380 222 V262"/></g>
+  <g transform="translate(225 262)">
+    <g><rect width="70" height="74" rx="10" fill="#1e293b"/><rect x="10" y="12" width="50" height="10" rx="4" fill="#334155"/><rect x="10" y="32" width="50" height="10" rx="4" fill="#334155"/><rect x="10" y="52" width="50" height="10" rx="4" fill="#334155"/><circle cx="52" cy="17" r="3" fill="#34a853"/><circle cx="52" cy="37" r="3" fill="#34a853"/><circle cx="52" cy="57" r="3" fill="#fbbc04"/></g>
+    <g transform="translate(60 0)"><rect width="70" height="74" rx="10" fill="#1e293b"/><rect x="10" y="12" width="50" height="10" rx="4" fill="#334155"/><rect x="10" y="32" width="50" height="10" rx="4" fill="#334155"/><rect x="10" y="52" width="50" height="10" rx="4" fill="#334155"/><circle cx="52" cy="17" r="3" fill="#34a853"/><circle cx="52" cy="37" r="3" fill="#4285f4"/><circle cx="52" cy="57" r="3" fill="#34a853"/></g>
+    <g transform="translate(120 0)"><rect width="70" height="74" rx="10" fill="#1e293b"/><rect x="10" y="12" width="50" height="10" rx="4" fill="#334155"/><rect x="10" y="32" width="50" height="10" rx="4" fill="#334155"/><rect x="10" y="52" width="50" height="10" rx="4" fill="#334155"/><circle cx="52" cy="17" r="3" fill="#ea4335"/><circle cx="52" cy="37" r="3" fill="#34a853"/><circle cx="52" cy="57" r="3" fill="#34a853"/></g>
+  </g>
+  <circle cx="90" cy="320" r="40" fill="#dbeafe"/><circle cx="560" cy="70" r="30" fill="#fde68a"/>
+</svg>
