@@ -130,6 +130,14 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
+        const insertShareButton = document.querySelector('.editor-insert-share');
+        if (insertShareButton) {
+            insertShareButton.addEventListener('click', function () {
+                editor.focus();
+                document.execCommand('insertHTML', false, '<p>[social_share]</p>');
+            });
+        }
+
         const featuredButton = document.getElementById('uploadFeaturedImage');
         const featuredFile = document.getElementById('featuredImageFile');
         const featuredInput = document.getElementById('featuredImage');

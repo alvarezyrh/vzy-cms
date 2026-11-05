@@ -30,5 +30,21 @@
         "created_at": "2026-10-24 22:27:03",
         "updated_at": "2026-10-24 22:27:03",
         "id": 2
+    },
+    {
+        "title": "Blog",
+        "slug": "blog",
+        "content": "[blog_posts]",
+        "custom_css": "",
+        "custom_js": "",
+        "status": "published",
+        "is_frontpage": 0,
+        "author_id": 1,
+        "seo_title": "Blog — Wawasan Teknologi, Keamanan Digital & Bisnis",
+        "seo_description": "Artikel seputar kecerdasan buatan, keamanan digital, dan peluang bisnis di era digital.",
+        "seo_keywords": "blog teknologi, AI, keamanan digital, bisnis digital",
+        "created_at": "2026-11-05 15:57:54",
+        "updated_at": "2026-11-05 15:57:54",
+        "id": 3
     }
 ]

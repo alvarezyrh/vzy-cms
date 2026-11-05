@@ -10,7 +10,7 @@
                 <i class="fas fa-home"></i> Dashboard
             </a>
             <a href="../public/" class="nav-item" target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-globe"></i> Ke Website
+                <i class="fas fa-globe"></i> Website
             </a>
         </div>
 

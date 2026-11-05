@@ -1,1 +1,74 @@
-[]
+[
+    {
+        "name": "AI",
+        "slug": "ai",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 1
+    },
+    {
+        "name": "Machine Learning",
+        "slug": "machine-learning",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 2
+    },
+    {
+        "name": "Produktivitas",
+        "slug": "produktivitas",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 3
+    },
+    {
+        "name": "Transformasi Digital",
+        "slug": "transformasi-digital",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 4
+    },
+    {
+        "name": "Keamanan Siber",
+        "slug": "keamanan-siber",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 5
+    },
+    {
+        "name": "Phishing",
+        "slug": "phishing",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 6
+    },
+    {
+        "name": "Ransomware",
+        "slug": "ransomware",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 7
+    },
+    {
+        "name": "Perlindungan Data",
+        "slug": "perlindungan-data",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 8
+    },
+    {
+        "name": "Bisnis Digital",
+        "slug": "bisnis-digital",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 9
+    },
+    {
+        "name": "UMKM",
+        "slug": "umkm",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 10
+    },
+    {
+        "name": "E-commerce",
+        "slug": "e-commerce",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 11
+    },
+    {
+        "name": "Startup",
+        "slug": "startup",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 12
+    }
+]

@@ -1043,3 +1043,98 @@ select.form-control {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-muted);
 }
+
+/* Plugins page */
+.plugin-summary { display: flex; gap: 8px; flex-wrap: wrap; }
+.plugin-summary-item { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.plugin-summary-item i { font-size: 7px; }
+.plugin-summary-item.is-active { background: #dcfce7; color: #15803d; }
+.plugin-summary-item.is-inactive { background: #f1f5f9; color: #64748b; }
+
+.plugin-list { display: grid; gap: 12px; }
+.plugin-item {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) 112px 48px;
+    align-items: center;
+    column-gap: 18px;
+    padding: 16px 20px 16px 16px;
+    border: 1px solid var(--border);
+    border-left: 4px solid transparent;
+    border-radius: 14px;
+    transition: var(--transition);
+}
+.plugin-item:hover { box-shadow: var(--shadow); }
+.plugin-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; font-size: 19px; color: #fff; }
+.plugin-info { min-width: 0; }
+.plugin-title { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.plugin-title h3 { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.3; }
+.plugin-version { padding: 2px 8px; border-radius: 6px; background: rgba(15, 23, 42, .06); color: var(--text-secondary); font-size: 11px; font-weight: 600; }
+.plugin-info p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--text-secondary); }
+.plugin-status { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 6px 0; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.plugin-status i { font-size: 7px; }
+.plugin-toggle { display: flex; justify-content: flex-end; margin: 0; }
+.plugin-toggle .switch { display: block; }
+
+/* Active: green */
+.plugin-item.is-active { background: #f0fdf4; border-color: #bbf7d0; border-left-color: #16a34a; }
+.plugin-item.is-active .plugin-icon { background: linear-gradient(135deg, #16a34a, #22c55e); box-shadow: 0 6px 14px rgba(22, 163, 74, .25); }
+.plugin-item.is-active .plugin-status { background: #dcfce7; color: #15803d; }
+.plugin-item.is-active .switch input:checked + .slider { background: #16a34a; }
+
+/* Inactive: grey */
+.plugin-item.is-inactive { background: #f8fafc; border-left-color: #cbd5e1; }
+.plugin-item.is-inactive .plugin-icon { background: #e2e8f0; color: #94a3b8; }
+.plugin-item.is-inactive .plugin-title h3 { color: var(--text-secondary); }
+.plugin-item.is-inactive .plugin-info p { color: var(--text-muted); }
+.plugin-item.is-inactive .plugin-status { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+.plugin-item.is-inactive .switch .slider { background: #cbd5e1; }
+
+@media (max-width: 640px) {
+    .plugin-item { grid-template-columns: 44px minmax(0, 1fr) 48px; row-gap: 10px; padding: 14px; }
+    .plugin-icon { width: 44px; height: 44px; font-size: 17px; }
+    .plugin-status { grid-column: 2; grid-row: 2; justify-self: start; width: auto; padding: 4px 12px; }
+    .plugin-toggle { grid-column: 3; grid-row: 1; }
+}
+
+/* Plugin settings panel (e.g. Social Share) */
+.plugin-settings { grid-column: 1 / -1; margin-top: 14px; padding-top: 14px; border-top: 1px dashed rgba(15, 23, 42, .12); }
+.plugin-settings summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--primary-dark); list-style: none; }
+.plugin-settings summary::-webkit-details-marker { display: none; }
+.plugin-settings summary::after { content: '\f107'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform .2s ease; }
+.plugin-settings[open] summary::after { transform: rotate(180deg); }
+.plugin-settings-form { display: grid; gap: 16px; margin-top: 16px; }
+.plugin-settings-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.plugin-settings-group { display: grid; gap: 8px; }
+.plugin-settings-label { font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .04em; }
+.plugin-settings-hint { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--text-secondary); }
+.plugin-settings-hint i { color: var(--primary); margin-right: 4px; }
+.share-network-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.share-network-option input { position: absolute; opacity: 0; pointer-events: none; }
+.share-network-option span { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 10px; background: #fff; color: var(--text-secondary); font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--transition); }
+.share-network-option span i { color: var(--net-color); }
+.share-network-option input:checked + span { border-color: var(--net-color); background: var(--net-color); color: #fff; }
+.share-network-option input:checked + span i { color: #fff; }
+.share-network-option input:focus-visible + span { box-shadow: 0 0 0 3px rgba(13, 148, 136, .2); }
+@media (max-width: 640px) { .plugin-settings-row { grid-template-columns: 1fr; } }
+
+/* Admin background: soft teal gradient, color glows, and a subtle dot grid */
+body {
+    background-color: #eef6f5;
+    background-image:
+        radial-gradient(circle at 12% 8%, rgba(45, 212, 191, .22), transparent 38%),
+        radial-gradient(circle at 92% 18%, rgba(56, 189, 248, .14), transparent 34%),
+        radial-gradient(circle at 78% 96%, rgba(74, 222, 128, .16), transparent 40%),
+        linear-gradient(180deg, #f0fdfa 0%, #f1f5f9 55%, #eef2f7 100%);
+    background-attachment: fixed;
+}
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(13, 148, 136, .13) 1.2px, transparent 1.5px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .55) 60%, rgba(0, 0, 0, .25) 100%);
+    mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .55) 60%, rgba(0, 0, 0, .25) 100%);
+}

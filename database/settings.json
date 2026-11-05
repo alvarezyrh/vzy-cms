@@ -2,42 +2,67 @@
     {
         "id": 1,
         "setting_key": "site_name",
-        "setting_value": "My CMS"
+        "setting_value": "MBGCMS",
+        "updated_at": "2026-11-05 16:08:55"
     },
     {
         "id": 2,
         "setting_key": "site_tagline",
-        "setting_value": "Powered by Vanilla PHP"
+        "setting_value": "Powered by vzy",
+        "updated_at": "2026-11-05 16:08:55"
     },
     {
         "id": 3,
         "setting_key": "site_url",
-        "setting_value": ""
+        "setting_value": "https:\/\/doni.qreativeplay.id",
+        "updated_at": "2026-11-05 16:08:55"
     },
     {
         "id": 4,
         "setting_key": "posts_per_page",
-        "setting_value": "10"
+        "setting_value": "10",
+        "updated_at": "2026-11-05 16:08:55"
     },
     {
         "id": 5,
         "setting_key": "timezone",
-        "setting_value": "Asia\/Jakarta"
+        "setting_value": "Asia\/Jakarta",
+        "updated_at": "2026-11-05 16:08:55"
     },
     {
         "id": 6,
         "setting_key": "date_format",
-        "setting_value": "d M Y"
+        "setting_value": "d M Y",
+        "updated_at": "2026-11-05 16:08:55"
     },
     {
         "id": 7,
         "setting_key": "allow_comments",
-        "setting_value": "1"
+        "setting_value": "0",
+        "updated_at": "2026-11-05 16:08:55"
     },
     {
         "id": 8,
         "setting_key": "navigation_seeded",
         "setting_value": "1",
         "updated_at": "2026-10-24 12:16:39"
+    },
+    {
+        "id": 9,
+        "setting_key": "social_share_networks",
+        "setting_value": "whatsapp,facebook,x,linkedin,telegram,email,copy",
+        "updated_at": "2026-11-05 16:04:53"
+    },
+    {
+        "id": 10,
+        "setting_key": "social_share_position",
+        "setting_value": "both",
+        "updated_at": "2026-11-05 16:04:53"
+    },
+    {
+        "id": 11,
+        "setting_key": "social_share_label",
+        "setting_value": "Bagikan artikel ini",
+        "updated_at": "2026-11-05 16:04:53"
     }
 ]

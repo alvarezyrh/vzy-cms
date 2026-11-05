@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "name": "Teknologi",
+        "slug": "teknologi",
+        "description": "Artikel seputar perkembangan teknologi dan inovasi digital.",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 1
+    },
+    {
+        "name": "Keamanan Digital",
+        "slug": "keamanan-digital",
+        "description": "Tips dan wawasan seputar keamanan siber dan perlindungan data.",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 2
+    },
+    {
+        "name": "Bisnis Digital",
+        "slug": "bisnis-digital",
+        "description": "Inspirasi dan strategi bisnis di era digital.",
+        "created_at": "2026-11-05 15:57:54",
+        "id": 3
+    }
+]

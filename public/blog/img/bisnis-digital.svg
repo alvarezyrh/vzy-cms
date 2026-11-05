@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Ilustrasi peluang bisnis digital">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0fdfa"/><stop offset="1" stop-color="#fef3c7"/></linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset="1" stop-color="#0f766e"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fbbf24" stop-opacity=".35"/><stop offset="1" stop-color="#fbbf24" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="560" cy="150" r="220" fill="url(#glow)"/>
+  <rect x="90" y="80" width="400" height="290" rx="22" fill="#fff" stroke="#ccfbf1" stroke-width="2"/>
+  <rect x="114" y="104" width="120" height="12" rx="6" fill="#99f6e4"/><rect x="114" y="126" width="80" height="10" rx="5" fill="#e2e8f0"/>
+  <g stroke="#e2e8f0" stroke-width="2"><path d="M114 340 H466"/><path d="M114 290 H466" stroke-dasharray="4 6"/><path d="M114 240 H466" stroke-dasharray="4 6"/><path d="M114 190 H466" stroke-dasharray="4 6"/></g>
+  <g fill="url(#bar)"><rect x="140" y="280" width="40" height="60" rx="8"/><rect x="210" y="250" width="40" height="90" rx="8"/><rect x="280" y="220" width="40" height="120" rx="8"/><rect x="350" y="180" width="40" height="160" rx="8"/><rect x="420" y="150" width="40" height="190" rx="8" fill="#f59e0b"/></g>
+  <path d="M160 262 L230 232 L300 200 L370 160 L440 120" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M424 112 L446 116 L438 137" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(560 120)">
+    <rect width="140" height="230" rx="24" fill="#0f172a"/><rect x="10" y="22" width="120" height="186" rx="12" fill="#f0fdfa"/>
+    <rect x="22" y="36" width="96" height="56" rx="8" fill="#ccfbf1"/><path d="M36 82 L60 58 L76 72 L92 52 L106 82Z" fill="#14b8a6"/>
+    <rect x="22" y="102" width="70" height="8" rx="4" fill="#94a3b8"/><rect x="22" y="116" width="50" height="8" rx="4" fill="#cbd5e1"/>
+    <rect x="22" y="160" width="96" height="30" rx="10" fill="#f59e0b"/><text x="70" y="180" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#fff">BELI</text>
+  </g>
+  <g transform="translate(700 330)"><circle r="34" fill="#fbbf24"/><circle r="26" fill="#f59e0b"/><text y="9" text-anchor="middle" font-family="Arial" font-size="24" font-weight="800" fill="#fff">Rp</text></g>
+  <g transform="translate(520 60)"><circle r="22" fill="#14b8a6"/><path d="M-8 0 H8 M0 -8 V8" stroke="#fff" stroke-width="4" stroke-linecap="round"/></g>
+</svg>

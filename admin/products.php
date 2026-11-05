@@ -91,12 +91,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description'] ?? '');
     $image = trim($_POST['image'] ?? '');
     $price = trim($_POST['price'] ?? '');
+    $sku = normalizeProductSku($_POST['sku'] ?? '');
+    $stock = trim($_POST['stock'] ?? '');
     $status = $_POST['status'] ?? 'draft';
     $validImage = $image === ''
         || preg_match('#^(https?://|/|uploads/)#i', $image) === 1;
 
     if ($name === '') {
         flash('error', 'Nama produk wajib diisi.');
+        redirect($productId ? "products.php?action=edit&id=$productId" : 'products.php?action=create');
+    }
+    if ($sku !== '' && !isValidProductSku($sku)) {
+        flash('error', 'SKU 2–40 karakter, hanya huruf, angka, titik, strip, atau garis bawah.');
+        redirect($productId ? "products.php?action=edit&id=$productId" : 'products.php?action=create');
+    }
+    if ($sku !== '' && productSkuExists($sku, $productId)) {
+        flash('error', 'SKU "' . $sku . '" sudah dipakai produk lain.');
+        redirect($productId ? "products.php?action=edit&id=$productId" : 'products.php?action=create');
+    }
+    if ($stock === '' || !ctype_digit($stock)) {
+        flash('error', 'Stok wajib diisi dengan angka bulat nol atau lebih.');
         redirect($productId ? "products.php?action=edit&id=$productId" : 'products.php?action=create');
     }
     if ($price !== '' && (!is_numeric($price) || (float)$price < 0)) {
@@ -116,6 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'name' => $name,
         'description' => $description,
         'price' => $price,
+        'sku' => $sku,
+        'stock' => (int)$stock,
         'image' => $image,
         'status' => $status,
         'updated_at' => $now,
@@ -125,11 +141,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             flash('error', 'Produk tidak ditemukan.');
             redirect('products.php');
         }
+        if ($sku === '') $fields['sku'] = generateProductSku($name, $productId);
         update('products', $productId, $fields);
         logActivity('update_product', $name);
     } else {
         $fields['created_at'] = $now;
         $productId = insert('products', $fields);
+        if ($sku === '') update('products', $productId, ['sku' => generateProductSku($name, $productId)]);
         logActivity('create_product', $name);
     }
     productCatalogSaveMessage();
@@ -171,6 +189,18 @@ include __DIR__ . '/includes/header.php';
             <div class="form-group">
                 <label class="form-label">Deskripsi</label>
                 <textarea name="description" class="form-control" rows="4"><?= e($product['description'] ?? '') ?></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">SKU</label>
+                    <input type="text" name="sku" class="form-control" maxlength="40" pattern="[A-Za-z0-9][A-Za-z0-9._\-]{1,39}" placeholder="Contoh: WIN11-PRO-0001" style="text-transform:uppercase;font-family:monospace" value="<?= e($product['sku'] ?? '') ?>">
+                    <div class="form-hint">Kode unik produk. Kosongkan untuk dibuat otomatis.</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Stok Tersedia *</label>
+                    <input type="number" name="stock" class="form-control" min="0" step="1" required value="<?= e(isset($product['stock']) ? (string)$product['stock'] : '') ?>" placeholder="0">
+                    <div class="form-hint">Jumlah unit / lisensi yang siap dijual.</div>
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
@@ -232,11 +262,21 @@ include __DIR__ . '/includes/header.php';
         <?php else: ?>
         <div class="table-responsive">
             <table>
-                <thead><tr><th>Produk</th><th>Harga</th><th>Status</th><th>Terakhir diubah</th><th>Aksi</th></tr></thead>
+                <thead><tr><th>Produk</th><th>SKU</th><th>Stok</th><th>Harga</th><th>Status</th><th>Terakhir diubah</th><th>Aksi</th></tr></thead>
                 <tbody>
-                <?php foreach ($products as $item): ?>
+                <?php foreach ($products as $item):
+                    $hasStock = isset($item['stock']) && $item['stock'] !== '';
+                    $stockQty = (int)($item['stock'] ?? 0);
+                    [$stockBadge, $stockLabel] = !$hasStock ? ['secondary', 'Belum diatur']
+                        : ($stockQty === 0 ? ['danger', 'Habis'] : ($stockQty <= 5 ? ['warning', 'Menipis'] : ['success', 'Tersedia']));
+                ?>
                 <tr>
                     <td style="font-weight:600"><?= e($item['name'] ?? '') ?></td>
+                    <td><code><?= e(($item['sku'] ?? '') !== '' ? $item['sku'] : '—') ?></code></td>
+                    <td style="white-space:nowrap">
+                        <?php if ($hasStock): ?><strong><?= number_format($stockQty, 0, ',', '.') ?></strong> <?php endif; ?>
+                        <span class="badge badge-<?= $stockBadge ?>"><?= $stockLabel ?></span>
+                    </td>
                     <td><?= isset($item['price']) && $item['price'] !== '' ? 'Rp ' . number_format((float)$item['price'], 0, ',', '.') : 'Hubungi kami' ?></td>
                     <td><span class="badge badge-<?= ($item['status'] ?? '') === 'published' ? 'success' : 'warning' ?>"><?= e($item['status'] ?? 'draft') ?></span></td>
                     <td><?= formatDate($item['updated_at'] ?? $item['created_at'] ?? '') ?></td>

@@ -3,40 +3,48 @@
         "id": 1,
         "name": "Windows 11",
         "description": "Sistem operasi desktop Microsoft untuk produktivitas, keamanan, dan pengalaman kerja modern. Edisi dan persyaratan perangkat dapat disesuaikan dengan kebutuhan.",
-        "price": "",
+        "price": "700000",
         "image": "\/public\/pages\/img\/products\/windows-11.svg",
         "status": "published",
         "created_at": "2026-10-24 22:27:03",
-        "updated_at": "2026-10-24 22:27:03"
+        "updated_at": "2026-11-05 15:46:56",
+        "sku": "WINDOW-0001",
+        "stock": 8
     },
     {
         "id": 2,
         "name": "Kaspersky Antivirus",
         "description": "Solusi keamanan untuk membantu melindungi perangkat dari malware, phishing, dan ancaman digital. Pilihan paket dan jumlah perangkat mengikuti kebutuhan.",
-        "price": "",
+        "price": "10000000",
         "image": "\/public\/pages\/img\/products\/kaspersky-antivirus.svg",
         "status": "published",
         "created_at": "2026-10-24 22:27:03",
-        "updated_at": "2026-10-24 22:27:03"
+        "updated_at": "2026-11-05 15:47:18",
+        "sku": "KASPER-0002",
+        "stock": 11
     },
     {
         "id": 3,
         "name": "Google Cloud",
         "description": "Layanan cloud untuk komputasi, penyimpanan, database, dan pengembangan aplikasi. Konsultasikan kebutuhan dan estimasi penggunaan untuk menentukan solusi yang sesuai.",
-        "price": "",
+        "price": "2000000",
         "image": "\/public\/pages\/img\/products\/google-cloud.svg",
         "status": "published",
         "created_at": "2026-10-24 22:27:03",
-        "updated_at": "2026-10-24 22:27:03"
+        "updated_at": "2026-11-05 15:47:33",
+        "sku": "GOOGLE-0003",
+        "stock": 4
     },
     {
         "id": 4,
         "name": "Microsoft 365 (Office 365)",
         "description": "Aplikasi produktivitas Office dan layanan cloud untuk bekerja serta berkolaborasi. Pilihan aplikasi dan paket bergantung pada kebutuhan pengguna atau organisasi.",
-        "price": "",
+        "price": "400000",
         "image": "\/public\/pages\/img\/products\/microsoft-365.svg",
         "status": "published",
         "created_at": "2026-10-24 22:27:03",
-        "updated_at": "2026-10-24 22:27:03"
+        "updated_at": "2026-11-05 15:47:47",
+        "sku": "MICROS-0004",
+        "stock": 100
     }
 ]
