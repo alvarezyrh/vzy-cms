@@ -9,7 +9,6 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     $act=$_POST['form_action']??'';
     if($act==='navigation_settings'){
         setSetting('nav_brand',trim($_POST['nav_brand']??'PT MBG'));
-        setSetting('nav_logo_mark',trim($_POST['nav_logo_mark']??'MBG'));
         setSetting('nav_cta_label',trim($_POST['nav_cta_label']??'Hubungi Kami'));
         setSetting('nav_cta_url',trim($_POST['nav_cta_url']??'#contact'));
         syncWebsiteNavigation();
@@ -41,7 +40,7 @@ include __DIR__.'/includes/header.php';
 <div class="card" style="grid-column:1/-1"><div class="card-header"><h2 class="card-title">Pengaturan Navigation Website</h2></div>
 <div class="card-body"><form method="POST"><?=csrfField()?><input type="hidden" name="form_action" value="navigation_settings">
 <div class="form-row">
-<div class="form-group"><label class="form-label">Logo Mark</label><input type="text" name="nav_logo_mark" class="form-control" value="<?=e(getSetting('nav_logo_mark','MBG'))?>" maxlength="8"></div>
+<div class="form-group"><label class="form-label">Logo</label><div style="display:flex;align-items:center;gap:12px;min-height:44px"><img src="/public/assets/brand/mbg-mark.svg" alt="Logo PT MBG" width="40" height="40" style="border-radius:11px"><span class="form-hint" style="margin:0">Logo dipasang otomatis dari <code>public/assets/brand/</code>. Ganti file SVG di sana untuk memperbarui logo di seluruh website.</span></div></div>
 <div class="form-group"><label class="form-label">Nama Brand</label><input type="text" name="nav_brand" class="form-control" value="<?=e(getSetting('nav_brand','PT MBG'))?>"></div>
 </div>
 <div class="form-row">

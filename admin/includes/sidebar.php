@@ -1,6 +1,6 @@
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-        <div class="sidebar-logo">MBG</div>
+        <div class="sidebar-logo"><img src="/public/assets/brand/mbg-mark.svg" alt="Logo PT MBG" width="42" height="42"></div>
         <div class="sidebar-brand">PT <span>MBG</span></div>
     </div>
     <nav class="sidebar-nav">

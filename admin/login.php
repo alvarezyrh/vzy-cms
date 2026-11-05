@@ -29,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CMS Admin</title>
+    <title>Login — PT MBG Admin</title>
+    <link rel="icon" type="image/svg+xml" href="/public/assets/brand/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -37,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         body{font-family:'Inter',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f172a 0%,#0d9488 100%);padding:20px}
         .login-card{background:#fff;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,.2);padding:48px 40px;width:100%;max-width:420px;animation:floatIn .5s ease}
         @keyframes floatIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-        .login-logo{width:64px;height:64px;background:linear-gradient(135deg,#0d9488,#2dd4bf);border-radius:18px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;margin:0 auto 20px;box-shadow:0 8px 24px rgba(13,148,136,.4)}
+        .login-logo{width:64px;height:64px;border-radius:18px;margin:0 auto 20px;box-shadow:0 8px 24px rgba(13,148,136,.4)}.login-logo img{display:block;width:100%;height:100%}
         h1{text-align:center;font-size:24px;font-weight:700;color:#1e293b;margin-bottom:6px}
         .subtitle{text-align:center;color:#94a3b8;font-size:14px;margin-bottom:32px}
         .form-group{margin-bottom:18px}
@@ -56,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <div class="login-card">
-    <div class="login-logo">JD</div>
+    <div class="login-logo"><img src="/public/assets/brand/mbg-mark.svg" alt="Logo PT MBG" width="64" height="64"></div>
     <h1>PT MBG</h1>
     <p class="subtitle">Masuk ke dashboard</p>
     <?php if ($error): ?><div class="error"><i class="fas fa-exclamation-circle"></i> <?= htmlspecialchars($error) ?></div><?php endif; ?>

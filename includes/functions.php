@@ -222,9 +222,17 @@ function publicPageUrl(array $page): string {
         : '/public/pages/' . rawurlencode($page['slug'] ?? '') . '.html';
 }
 
+// Brand logo (simbol PT MBG) used in every navbar/footer.
+function brandMarkHtml(): string {
+    return '<img class="nav-logo-mark" src="/public/assets/brand/mbg-mark.svg" alt="" width="40" height="40">';
+}
+
+function brandFaviconTags(): string {
+    return '<link rel="icon" type="image/svg+xml" href="/public/assets/brand/favicon.svg">' . "\n";
+}
+
 function publicCatalogNavigation(): string {
     $brand = getSetting('nav_brand', 'PT MBG');
-    $logoMark = getSetting('nav_logo_mark', 'MBG');
     $ctaLabel = getSetting('nav_cta_label', 'Hubungi Kami');
     $ctaUrl = getSetting('nav_cta_url', '#contact');
     if (str_starts_with($ctaUrl, '#')) $ctaUrl = '/public/home/index.html' . $ctaUrl;
@@ -244,7 +252,7 @@ function publicCatalogNavigation(): string {
     $links .= '<a href="' . e($ctaUrl) . '" class="nav-cta">' . e($ctaLabel) . '</a>';
 
     return '<div class="nav-wrap"><nav class="nav" aria-label="Navigasi utama">'
-        . '<a href="/public/home/" class="nav-logo"><span class="nav-logo-mark">' . e($logoMark) . '</span>' . e($brand) . '</a>'
+        . '<a href="/public/home/" class="nav-logo">' . brandMarkHtml() . e($brand) . '</a>'
         . '<div class="nav-links" id="navLinks">' . $links . '</div>'
         . '<button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>'
         . '</nav></div>'
@@ -253,11 +261,10 @@ function publicCatalogNavigation(): string {
 
 function publicCatalogFooter(): string {
     $brand = getSetting('nav_brand', 'PT MBG');
-    $logoMark = getSetting('nav_logo_mark', 'MBG');
     $whatsappNumber = '6281313616756';
 
     return '<footer class="footer"><div class="container"><div class="footer-grid">'
-        . '<div class="footer-brand"><a href="/public/home/" class="nav-logo"><span class="nav-logo-mark">' . e($logoMark) . '</span>' . e($brand) . '</a>'
+        . '<div class="footer-brand"><a href="/public/home/" class="nav-logo">' . brandMarkHtml() . e($brand) . '</a>'
         . '<p>Mitra teknologi untuk solusi software, konsultasi IT, dan kebutuhan produk digital bisnis Anda.</p></div>'
         . '<div><h4>Navigasi</h4><ul><li><a href="/public/home/index.html#about">Tentang Kami</a></li><li><a href="/public/home/index.html#services">Layanan</a></li><li><a href="/public/pages/produk.html">Katalog Produk</a></li><li><a href="/public/pages/blog.html">Blog</a></li></ul></div>'
         . '<div><h4>Produk</h4><ul><li><a href="/public/pages/produk.html">Windows 11</a></li><li><a href="/public/pages/produk.html">Kaspersky Antivirus</a></li><li><a href="/public/pages/produk.html">Google Cloud &amp; Microsoft 365</a></li></ul></div>'
@@ -291,6 +298,7 @@ function syncPageToPublic(array $page): bool {
         . "<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
         . '<title>' . $title . "</title>\n"
         . '<meta name="description" content="' . $description . '">' . "\n"
+        . brandFaviconTags()
         . "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css\">\n"
         . "<link rel=\"stylesheet\" href=\"../home/css/style.css\">\n"
         . '<style>' . $css . "</style>\n</head>\n<body" . $bodyClass . ">\n"
@@ -703,6 +711,7 @@ function renderBlogPostPage(array $post): string {
         . '<meta property="og:title" content="' . e($seoTitle) . '">' . "\n"
         . '<meta property="og:description" content="' . e($seoDescription) . '">' . "\n"
         . '<meta property="og:type" content="article">' . "\n"
+        . brandFaviconTags()
         . "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css\">\n"
         . "<link rel=\"stylesheet\" href=\"../home/css/style.css\">\n"
         . blogStyles() . ($needsShareAssets ? socialShareStyles() : '') . "\n</head>\n<body class=\"catalog-page\">\n"
@@ -824,10 +833,9 @@ function syncWebsiteNavigation(): void {
     if ($html === false) return;
 
     $brand = getSetting('nav_brand', 'PT MBG');
-    $logoMark = getSetting('nav_logo_mark', 'MBG');
     $ctaLabel = getSetting('nav_cta_label', 'Hubungi Kami');
     $ctaUrl = getSetting('nav_cta_url', '#contact');
-    $brandHtml = '<span class="nav-logo-mark">' . e($logoMark) . '</span>' . "\n        " . e($brand);
+    $brandHtml = brandMarkHtml() . "\n        " . e($brand);
 
     $menus = loadData('menus');
     $menu = $menus[0] ?? null;
