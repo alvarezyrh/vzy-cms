@@ -1,12 +1,5 @@
 <?php
-/**
- * Router untuk server bawaan PHP (khusus pengembangan lokal).
- * Meniru aturan .htaccess karena `php -S` tidak membaca .htaccess.
- *
- *   php -S 127.0.0.1:8000 dev-router.php
- *
- * Tidak dipakai di hosting (Apache/Nginx) dan tidak berfungsi di sana.
- */
+// Router server bawaan PHP untuk pengembangan lokal: php -S 127.0.0.1:8000 dev-router.php
 if (PHP_SAPI !== 'cli-server') {
     http_response_code(404);
     exit;
@@ -20,6 +13,16 @@ if (preg_match('#^/(database|config|includes)(/|$)#', $path) || preg_match('#^/u
     || preg_match('#/\.(?!well-known)#', $path)) {
     http_response_code(403);
     exit('Forbidden');
+}
+
+// URL lama halaman statis -> URL baru (.php)
+if (preg_match('#^/public/home/(index\.html)?$#', $path)) {
+    header('Location: /index.php' . (($q = $_SERVER['QUERY_STRING'] ?? '') !== '' ? '?' . $q : ''), true, 301);
+    exit;
+}
+if (preg_match('#^/public/pages/([A-Za-z0-9_-]+)\.html$#', $path, $m)) {
+    header('Location: /' . ($m[1] === 'home' ? 'index' : $m[1]) . '.php', true, 301);
+    exit;
 }
 
 $file = realpath($root . $path);

@@ -1,9 +1,5 @@
 <?php
-/**
- * Cek & perbaiki izin folder. Jalankan SEKALI setelah upload:
- *   https://domain-anda.com/fix-permissions.php
- * Setelah semua [OK], HAPUS file ini dari server.
- */
+// Jalankan SEKALI setelah upload, lalu HAPUS file ini dari server.
 header('Content-Type: text/html; charset=utf-8');
 
 // Folder yang ditulis oleh CMS:

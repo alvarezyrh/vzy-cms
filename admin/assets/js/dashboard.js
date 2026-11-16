@@ -1,7 +1,4 @@
-/**
- * CMS Dashboard JS
- * Made by vzy
- */
+// CMS Dashboard JS
 
 document.addEventListener('DOMContentLoaded', function () {
     // User menu toggle (click support for mobile)

@@ -1,7 +1,4 @@
-/**
- * PT MBG — Home Page JS
- * Hero slider + nav + reveal animations
- */
+// PT MBG — Home Page JS
 
 (function () {
   'use strict';

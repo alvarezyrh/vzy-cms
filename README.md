@@ -82,7 +82,7 @@ Penyimpanan JSON sangat cocok untuk website perusahaan dengan **sedikit admin** 
 ## 3. Struktur folder
 
 ```
-vzy-cms/
+genta-cms/
 ├── admin/              Dashboard admin (login di /admin/login.php)
 ├── config/             database.php — lokasi & fungsi penyimpanan data   [diblokir dari web]
 ├── database/           Data JSON (pengganti MySQL)                       [diblokir dari web, harus writable]
@@ -122,7 +122,7 @@ Di komputer Anda, kompres seluruh isi folder proyek menjadi `mbg-cms.zip`. Folde
 1. Buka **File Manager → `public_html`** (atau document root subdomain Anda).
 2. Kosongkan dulu file bawaan hosting seperti `index.html` atau `default.php`, jika ada.
 3. Klik **Upload**, pilih `mbg-cms.zip`, lalu klik kanan file tersebut → **Extract**.
-4. Pastikan hasilnya **langsung** berada di `public_html`, bukan di `public_html/vzy-cms/`:
+4. Pastikan hasilnya **langsung** berada di `public_html`, bukan di `public_html/genta-cms/`:
 
    ```
    public_html/admin/
@@ -288,7 +288,7 @@ Pilihan aman:
 Cukup PHP 8.1+, tanpa XAMPP dan tanpa MySQL:
 
 ```bash
-cd vzy-cms
+cd genta-cms
 php -S 127.0.0.1:8000 dev-router.php
 ```
 
@@ -301,7 +301,7 @@ php -S 127.0.0.1:8000 dev-router.php
 
 `dev-router.php` meniru aturan `.htaccess`, termasuk memblokir `database/`, `config/`, dan `includes/`, karena server bawaan PHP tidak membaca `.htaccess`.
 
-Jika memakai **XAMPP/Laragon**, buat virtual host (misalnya `http://mbg.test`) yang mengarah ke folder proyek. Jangan buka lewat `http://localhost/vzy-cms/` karena aplikasi harus berada di root domain.
+Jika memakai **XAMPP/Laragon**, buat virtual host (misalnya `http://mbg.test`) yang mengarah ke folder proyek. Jangan buka lewat `http://localhost/genta-cms/` karena aplikasi harus berada di root domain.
 
 ---
 
@@ -433,4 +433,4 @@ Lalu buka `database/users.json` dan ganti nilai `"password"` milik user `admin` 
 
 ---
 
-**Made by vzy** · © PT MBG
+**Made by Genta** · © PT MBG

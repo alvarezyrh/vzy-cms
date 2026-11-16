@@ -1,4 +1,4 @@
 <?php
 // Public frontend entry point.
-header('Location: home/index.html');
+header('Location: /index.php');
 exit;

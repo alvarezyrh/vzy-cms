@@ -1,7 +1,5 @@
 <?php
-/**
- * Core Helper Functions — File-based storage
- */
+// Core Helper Functions — File-based storage
 
 function slugify(string $text): string {
     $text = preg_replace('~[^\pL\d]+~u', '-', $text);
@@ -209,17 +207,15 @@ function mediaUrl(?string $path): string {
     return '../' . ltrim($path, '/');
 }
 
-/**
- * Persist dashboard pages as standalone public HTML files.
- */
+// Persist dashboard pages as standalone public HTML files.
 function publicPagePath(string $slug): string {
     return __DIR__ . '/../public/pages/' . slugify($slug) . '.html';
 }
 
 function publicPageUrl(array $page): string {
     return ($page['slug'] ?? '') === 'home'
-        ? '/public/home/'
-        : '/public/pages/' . rawurlencode($page['slug'] ?? '') . '.html';
+        ? '/index.php'
+        : '/' . rawurlencode($page['slug'] ?? '') . '.php';
 }
 
 // Brand logo (simbol PT MBG) used in every navbar/footer.
@@ -290,7 +286,7 @@ function syncPageToPublic(array $page): bool {
     $css = (string)($page['custom_css'] ?? '');
     $js = (string)($page['custom_js'] ?? '');
     // Shortcode pages get the shared site navigation and footer.
-    $withSiteChrome = $hasProductCatalog || $hasBlogList;
+    $withSiteChrome = $hasProductCatalog || $hasBlogList || !empty($page['site_chrome']);
     $catalogNavigation = $withSiteChrome ? publicCatalogNavigation() . "\n" : '';
     $catalogFooter = $withSiteChrome ? "\n" . publicCatalogFooter() : '';
     $bodyClass = $withSiteChrome ? ' class="catalog-page"' : '';
@@ -345,9 +341,9 @@ function renderProductCatalog(): string {
     $whatsappNumber = '6281313616756';
 
     $html = '<style>'
-        . '.catalog-page{padding-top:88px;background:var(--off-white)}'
+        . '.catalog-page{padding-top:0;background:var(--off-white)}'
         // Background: soft color blobs + dot grid so the page doesn't look plain.
-        . '.cms-product-catalog{position:relative;isolation:isolate;overflow:hidden;padding:56px 0 80px;background-color:#f0fdfa;background-image:radial-gradient(circle,rgba(13,148,136,.16) 1.5px,transparent 1.75px),linear-gradient(180deg,#ecfeff 0%,#f0fdfa 45%,#ffffff 100%);background-size:24px 24px,100% 100%}'
+        . '.cms-product-catalog{position:relative;isolation:isolate;overflow:hidden;padding:144px 0 80px;background-color:#f0fdfa;background-image:radial-gradient(circle,rgba(13,148,136,.16) 1.5px,transparent 1.75px),linear-gradient(180deg,#ecfeff 0%,#f0fdfa 45%,#ffffff 100%);background-size:24px 24px,100% 100%}'
         . '.cms-product-catalog::before,.cms-product-catalog::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);pointer-events:none}'
         . '.cms-product-catalog::before{width:520px;height:520px;top:-180px;left:-160px;background:rgba(45,212,191,.35)}'
         . '.cms-product-catalog::after{width:560px;height:560px;bottom:-220px;right:-180px;background:rgba(74,222,128,.25)}'
@@ -393,7 +389,7 @@ function renderProductCatalog(): string {
         . '.cms-order-form textarea{min-height:96px;resize:vertical}'
         . '.cms-order-form .submit-row{display:flex;justify-content:flex-end;margin-top:8px}'
         . '.cms-order-form .btn-submit{border:0;border-radius:12px;background:linear-gradient(135deg,var(--turquoise),#2dd4bf);color:#fff;padding:12px 18px;font-weight:700;cursor:pointer;box-shadow:0 12px 24px rgba(13,148,136,.2)}'
-        . '@media(max-width:600px){.cms-product-catalog{padding:40px 0 64px}.cms-product-info{padding:18px}.cms-order-modal-panel{padding:20px}}'
+        . '@media(max-width:600px){.cms-product-catalog{padding:128px 0 64px}.cms-product-info{padding:18px}.cms-order-modal-panel{padding:20px}}'
         . '</style><section class="section cms-product-catalog"><div class="container">'
         . '<header class="section-header center"><div class="section-label">Solusi Digital</div>'
         . '<h1 class="section-title">Katalog Produk</h1>'
@@ -453,9 +449,7 @@ function syncProductCatalogPages(): bool {
     return $success;
 }
 
-/**
- * Blog: [blog_posts] shortcode + static article pages in public/blog/.
- */
+// Blog: [blog_posts] shortcode + static article pages in public/blog/.
 function blogDir(): string {
     return __DIR__ . '/../public/blog';
 }
@@ -505,8 +499,8 @@ function postTagNames(array $post): array {
 function blogStyles(): string {
     return '<style>'
         // Leave room for the fixed navbar.
-        . '.catalog-page{padding-top:88px;background:var(--off-white)}'
-        . '.blog-section{position:relative;isolation:isolate;overflow:hidden;padding:56px 0 80px;background-color:#f0fdfa;background-image:radial-gradient(circle,rgba(13,148,136,.14) 1.5px,transparent 1.75px),linear-gradient(180deg,#ecfeff 0%,#f0fdfa 45%,#fff 100%);background-size:24px 24px,100% 100%}'
+        . '.catalog-page{padding-top:0;background:var(--off-white)}'
+        . '.blog-section{position:relative;isolation:isolate;overflow:hidden;padding:144px 0 80px;background-color:#f0fdfa;background-image:radial-gradient(circle,rgba(13,148,136,.14) 1.5px,transparent 1.75px),linear-gradient(180deg,#ecfeff 0%,#f0fdfa 45%,#fff 100%);background-size:24px 24px,100% 100%}'
         . '.blog-section::before,.blog-section::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);pointer-events:none}'
         . '.blog-section::before{width:520px;height:520px;top:-180px;left:-160px;background:rgba(45,212,191,.32)}'
         . '.blog-section::after{width:560px;height:560px;bottom:-220px;right:-180px;background:rgba(74,222,128,.22)}'
@@ -556,17 +550,13 @@ function blogStyles(): string {
         . '</style>';
 }
 
-/**
- * Plugins
- */
+// Plugins
 function isPluginActive(string $slug): bool {
     $plugin = findOne('plugins', fn($p) => ($p['slug'] ?? '') === $slug);
     return $plugin !== null && !empty($plugin['is_active']);
 }
 
-/**
- * Social Share plugin
- */
+// Social Share plugin
 function socialShareNetworks(): array {
     return [
         'whatsapp' => ['label' => 'WhatsApp', 'icon' => 'fab fa-whatsapp', 'color' => '#25d366'],

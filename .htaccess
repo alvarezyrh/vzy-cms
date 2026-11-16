@@ -1,4 +1,4 @@
-# Vanilla PHP CMS by vzy
+# Genta CMS
 Options -Indexes
 
 <IfModule mod_rewrite.c>
@@ -9,6 +9,11 @@ RewriteBase /
 
 # Prevent uploaded PHP files from being served or executed.
 RewriteRule ^uploads/.*\.php$ - [F,L,NC]
+
+# URL lama halaman statis -> URL baru (.php)
+RewriteRule ^public/home/(index\.html)?$ /index.php [R=301,L]
+RewriteRule ^public/pages/home\.html$ /index.php [R=301,L]
+RewriteRule ^public/pages/([A-Za-z0-9_-]+)\.html$ /$1.php [R=301,L]
 
 # Don't rewrite real files/folders
 RewriteCond %{REQUEST_FILENAME} -f [OR]

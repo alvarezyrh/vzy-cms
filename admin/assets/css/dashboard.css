@@ -1,7 +1,4 @@
-/* ========================================
-   CMS Dashboard - Floating Rounded Theme
-   Made by vzy
-   ======================================== */
+/* CMS Dashboard - Floating Rounded Theme */
 
 :root {
     --primary: #0d9488;
@@ -55,14 +52,14 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button, input, select, textarea { font-family: inherit; }
 
-/* ========== Layout ========== */
+/* Layout */
 .wrapper {
     display: flex;
     min-height: 100vh;
     padding-bottom: 60px; /* space for fixed footer */
 }
 
-/* ========== Sidebar - Floating Rounded ========== */
+/* Sidebar - Floating Rounded */
 .sidebar {
     width: var(--sidebar-width);
     background: var(--bg-sidebar);
@@ -211,7 +208,7 @@ button, input, select, textarea { font-family: inherit; }
     box-shadow: none;
 }
 
-/* ========== Main Content ========== */
+/* Main Content */
 .main-content {
     flex: 1;
     margin-left: calc(var(--sidebar-width) + 32px);
@@ -219,7 +216,7 @@ button, input, select, textarea { font-family: inherit; }
     min-height: 100vh;
 }
 
-/* ========== Topbar - Floating ========== */
+/* Topbar - Floating */
 .topbar {
     background: var(--bg-card);
     border-radius: var(--radius);
@@ -377,7 +374,7 @@ button, input, select, textarea { font-family: inherit; }
     color: var(--danger);
 }
 
-/* ========== Cards / Widgets - Floating ========== */
+/* Cards / Widgets - Floating */
 .card {
     background: var(--bg-card);
     border-radius: var(--radius);
@@ -562,7 +559,7 @@ button, input, select, textarea { font-family: inherit; }
     color: var(--text-muted);
 }
 
-/* ========== Tables ========== */
+/* Tables */
 .table-responsive {
     overflow-x: auto;
 }
@@ -600,7 +597,7 @@ table tr:hover td {
     background: var(--bg-hover);
 }
 
-/* ========== Buttons ========== */
+/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -672,7 +669,7 @@ table tr:hover td {
     gap: 6px;
 }
 
-/* ========== Forms ========== */
+/* Forms */
 .form-group {
     margin-bottom: 18px;
 }
@@ -727,7 +724,7 @@ select.form-control {
     margin-top: 4px;
 }
 
-/* ========== Badges ========== */
+/* Badges */
 .badge {
     display: inline-flex;
     align-items: center;
@@ -744,7 +741,7 @@ select.form-control {
 .badge-primary { background: #ccfbf1; color: #115e59; }
 .badge-secondary { background: #f1f5f9; color: #475569; }
 
-/* ========== Alerts / Flash ========== */
+/* Alerts / Flash */
 .alert {
     padding: 14px 18px;
     border-radius: var(--radius-sm);
@@ -766,7 +763,7 @@ select.form-control {
 .alert-warning { background: #fef3c7; color: #92400e; border-left: 4px solid var(--warning); }
 .alert-info { background: #ccfbf1; color: #115e59; border-left: 4px solid var(--info); }
 
-/* ========== Empty State ========== */
+/* Empty State */
 .empty-state {
     text-align: center;
     padding: 48px 20px;
@@ -785,7 +782,7 @@ select.form-control {
     margin-bottom: 8px;
 }
 
-/* ========== Footer Fixed ========== */
+/* Footer Fixed */
 .footer {
     position: fixed;
     bottom: 0;
@@ -807,7 +804,7 @@ select.form-control {
     font-weight: 700;
 }
 
-/* ========== Modal ========== */
+/* Modal */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -887,7 +884,7 @@ select.form-control {
     gap: 10px;
 }
 
-/* ========== Tabs ========== */
+/* Tabs */
 .tabs {
     display: flex;
     gap: 4px;
@@ -924,7 +921,7 @@ select.form-control {
     display: block;
 }
 
-/* ========== Code Editor ========== */
+/* Code Editor */
 .code-editor {
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
     font-size: 13px;
@@ -943,7 +940,7 @@ select.form-control {
     outline: 2px solid var(--primary);
 }
 
-/* ========== Responsive ========== */
+/* Responsive */
 @media (max-width: 992px) {
     .sidebar {
         transform: translateX(-120%);
@@ -979,7 +976,7 @@ select.form-control {
     }
 }
 
-/* ========== Toggle Switch ========== */
+/* Toggle Switch */
 .switch {
     position: relative;
     width: 48px;

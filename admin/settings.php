@@ -40,6 +40,6 @@ foreach($tzs as $tz):?><option value="<?=$tz?>" <?=$ctz===$tz?'selected':''?>><?
 <div style="padding:14px;background:var(--bg-body);border-radius:10px"><div style="font-size:12px;color:var(--text-muted)">PHP Version</div><div style="font-weight:600"><?=PHP_VERSION?></div></div>
 <div style="padding:14px;background:var(--bg-body);border-radius:10px"><div style="font-size:12px;color:var(--text-muted)">Storage</div><div style="font-weight:600">JSON Files</div></div>
 <div style="padding:14px;background:var(--bg-body);border-radius:10px"><div style="font-size:12px;color:var(--text-muted)">Server</div><div style="font-weight:600"><?=$_SERVER['SERVER_SOFTWARE']??'CLI'?></div></div>
-<div style="padding:14px;background:var(--bg-body);border-radius:10px"><div style="font-size:12px;color:var(--text-muted)">CMS Version</div><div style="font-weight:600">1.0.0 by vzy</div></div>
+<div style="padding:14px;background:var(--bg-body);border-radius:10px"><div style="font-size:12px;color:var(--text-muted)">CMS Version</div><div style="font-weight:600">1.0.0 by Genta</div></div>
 </div></div></div>
 <?php include __DIR__.'/includes/footer.php';?>

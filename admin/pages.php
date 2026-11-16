@@ -42,7 +42,7 @@ $page=null;
 if($action==='edit'&&$id){$page=findById('pages',$id);if(!$page){flash('error','Tidak ditemukan.');redirect('pages.php');}}
 ?>
 <div class="card"><div class="card-header"><h2 class="card-title"><?=$action==='edit'?'Edit Page':'Buat Page Baru'?></h2>
-<a href="pages.php" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Kembali</a></div>
+<div style="display:flex;gap:8px"><?php if($page):?><a href="builder.php?id=<?=$page['id']?>" target="_blank" rel="noopener" class="btn btn-primary btn-sm"><i class="fas fa-wand-magic-sparkles"></i> Edit dengan Builder</a><?php endif;?><a href="pages.php" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Kembali</a></div></div>
 <div class="card-body"><form method="POST"><?=csrfField()?>
 <?php if($page):?><input type="hidden" name="id" value="<?=$page['id']?>"><?php endif;?>
 <div class="form-group"><label class="form-label">Judul *</label><input type="text" name="title" id="title" class="form-control" required value="<?=e($page['title']??'')?>"></div>
@@ -99,7 +99,8 @@ usort($pages, function($a,$b){ if(($b['is_frontpage']??0)!=($a['is_frontpage']??
 <?php else:?><a href="pages.php?action=set_frontpage&id=<?=$p['id']?>" class="btn btn-sm btn-secondary" title="Set Frontpage"><i class="fas fa-home"></i></a><?php endif;?></td>
 <td><?=formatDate($p['created_at']??'')?></td>
 <td><div class="btn-group">
-<a href="pages.php?action=edit&id=<?=$p['id']?>" class="btn btn-sm btn-secondary btn-icon"><i class="fas fa-edit"></i></a>
+<a href="builder.php?id=<?=$p['id']?>" target="_blank" rel="noopener" class="btn btn-sm btn-primary btn-icon" title="Edit visual (drag &amp; drop)"><i class="fas fa-wand-magic-sparkles"></i></a>
+<a href="pages.php?action=edit&id=<?=$p['id']?>" class="btn btn-sm btn-secondary btn-icon" title="Edit kode"><i class="fas fa-edit"></i></a>
 <a href="pages.php?action=delete&id=<?=$p['id']?>" class="btn btn-sm btn-danger btn-icon" data-confirm="Trash?"><i class="fas fa-trash"></i></a>
 </div></td></tr>
 <?php endforeach;?></tbody></table></div><?php endif;?>

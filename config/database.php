@@ -1,8 +1,5 @@
 <?php
-/**
- * File-based Storage (JSON) — no DB driver needed
- * Pure vanilla PHP, works everywhere
- */
+// File-based Storage (JSON) — no DB driver needed
 
 define('DATA_DIR', __DIR__ . '/../database');
 
